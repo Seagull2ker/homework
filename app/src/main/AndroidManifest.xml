@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>   <!--std头格式,必须这么写 -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="chapter.android.aweme.ss.com.chapter2">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-feature android:name="android.hardware.camera2" />
+    <!--相机权限-->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <!--写入SD卡的权限：如果你希望保存相机拍照后的照片-->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!--读取SD卡的权限:打开相册选取图片所必须的权限-->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:name=".StudyApplication"
+        tools:ignore="GoogleAppIndexingWarning">
+
+        <activity android:name="chapter.android.aweme.ss.com.chapter2.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" /> <!--程序的主入口，声明了之后就会在桌面上显示图标 -->
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.LAUNCHER" /> <!--会显示在程序列表里，若配置了多个，以第一个为准-->
+            </intent-filter>
+        </activity>
+        <activity android:name="chapter.android.aweme.ss.com.chapter2.videoplay" />
+        <activity android:name="chapter.android.aweme.ss.com.chapter2.MyVideoActivity" />
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="chapter.android.aweme.ss.com.chapter2.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
+    </application>
+
+</manifest>
